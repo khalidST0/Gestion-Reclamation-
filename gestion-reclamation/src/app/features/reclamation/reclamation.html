@@ -1,0 +1,110 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="logo-area">
+      <h1>Gestion de Réclamations</h1>
+    </div>
+  </header>
+
+  <main class="dashboard-content">
+    <div class="table-card">
+      <div class="table-header">
+        <h2>All Submitted Réclamations</h2>
+        <button class="add-btn" (click)="openAddModal()">+ File New Réclamation</button>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Description Title</th>
+              <th>Description</th>
+              <th>Category Type</th>
+              <th>Submission Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of filteredReclamations">
+              <td>#00{{ item.id }}</td>
+              <td><strong>{{ item.title }}</strong></td>
+              <td class="table-description-cell">{{ item.description || '-' }}</td>
+              <td><span class="type-tag">{{ item.type }}</span></td>
+              <td>{{ item.date }}</td>
+              <td>
+                <span class="status-badge" [ngClass]="getStatusClass(item.status)">
+                  {{ item.status }}
+                </span>
+              </td>
+              <td>
+                <button class="action-btn edit" (click)="openModifyModal(item)">Modify</button>
+                <button class="action-btn delete" (click)="removeReclamation(item.id)">Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Edit Modal -->
+  <div *ngIf="isEditModalOpen" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Modify Réclamation</h2>
+        <button class="close-btn" (click)="closeModal()">×</button>
+      </div>
+      <div class="modal-body" *ngIf="selectedReclamation">
+        <div class="form-group">
+          <label>Title *</label>
+          <input type="text" [(ngModel)]="editTitle" class="form-input" placeholder="Enter réclamation title" />
+        </div>
+        <div class="form-group">
+          <label>Type</label>
+          <select [(ngModel)]="editType" class="form-input">
+            <option *ngFor="let type of reclamationTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea [(ngModel)]="editDescription" class="form-input" rows="4" placeholder="Enter reclamation description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" (click)="closeModal()">Cancel</button>
+        <button class="btn-save" (click)="saveModify()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add New Réclamation Modal -->
+  <div *ngIf="isAddModalOpen" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>File New Réclamation</h2>
+        <button class="close-btn" (click)="closeAddModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Title *</label>
+          <input type="text" [(ngModel)]="newTitle" class="form-input" placeholder="Enter réclamation title" />
+        </div>
+        <div class="form-group">
+          <label>Type *</label>
+          <select [(ngModel)]="newType" class="form-input">
+            <option *ngFor="let type of reclamationTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Description *</label>
+          <textarea [(ngModel)]="newDescription" class="form-input" placeholder="Enter reclamation description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" (click)="closeAddModal()">Cancel</button>
+        <button class="btn-save" (click)="saveNewReclamation()">Create Réclamation</button>
+      </div>
+    </div>
+  </div>
+</div>

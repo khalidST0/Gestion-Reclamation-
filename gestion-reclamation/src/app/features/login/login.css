@@ -1,0 +1,213 @@
+/* --- Master Layout --- */
+.login-wrapper {
+  display: flex;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+}
+
+/* --- Left Side (Display Panel) --- */
+.login-left {
+  flex: 1; /* Takes up 50% of the screen */
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.left-content {
+  max-width: 480px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-placeholder {
+  margin-bottom: 24px;
+  display: inline-flex;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.login-left h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.login-left p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #bfdbfe;
+  margin: 0;
+}
+
+/* Optional background decoration for the left side */
+.login-left::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* --- Right Side (Form Container) --- */
+.login-right {
+  flex: 1; /* Takes up the other 50% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 48px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+}
+
+.login-card h2 {
+  margin: 0 0 8px 0;
+  color: #0f172a;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.login-card > p {
+  color: #64748b;
+  font-size: 15px;
+  margin-bottom: 32px;
+}
+
+/* --- Form Fields --- */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: #f8fafc;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* --- Options (Remember Me / Forgot Password) --- */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* --- Buttons --- */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.login-btn:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+/* --- Error Alert --- */
+.error-alert {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.error-icon {
+  flex-shrink: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 900px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+  .login-left {
+    padding: 60px 20px;
+    flex: none;
+  }
+  .login-card {
+    box-shadow: none;
+    padding: 20px;
+  }
+}

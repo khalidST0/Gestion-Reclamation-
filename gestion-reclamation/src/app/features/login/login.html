@@ -1,0 +1,50 @@
+<div class="login-wrapper">
+
+  <div class="login-left">
+    <div class="left-content">
+      <div class="logo-placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+      </div>
+      <h1>Gestion de Réclamations</h1>
+      <p>A smart, centralized dashboard to manage, track, and resolve user issues with complete efficiency.</p>
+    </div>
+  </div>
+
+  <div class="login-right">
+    <div class="login-card">
+      <h2>Welcome Back</h2>
+      <p>Please login to your account.</p>
+
+      @if (errorMessage) {
+        <div class="error-alert">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="error-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          {{ errorMessage }}
+        </div>
+      }
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input id="email" formControlName="email" placeholder="name@example.com" type="email">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" formControlName="password" placeholder="••••••••" type="password">
+        </div>
+
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox"> Remember me
+          </label>
+          <a href="#" class="forgot-password">Forgot password?</a>
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid" class="login-btn">
+          Sign In
+        </button>
+      </form>
+    </div>
+  </div>
+
+</div>
