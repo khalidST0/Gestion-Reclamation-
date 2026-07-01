@@ -162,6 +162,30 @@ gestion_reclamation.sql
 Import this file into PostgreSQL before running the application.
 
 ---
+## 🗄️ Database Setup (PostgreSQL)
+
+### Prerequisites
+
+- PostgreSQL installed
+- pgAdmin 4 installed
+
+### Restore the Database
+
+1. Open **pgAdmin 4**.
+2. Create a new database (for example, `GestionRecDatabase`).
+3. Right-click the database and select **Restore...** if you exported a custom backup, or use the **Query Tool** if you have a plain `.sql` file.
+
+### If you have a `.sql` file (Plain format)
+
+1. Open **pgAdmin 4**.
+2. Create a new database named **GestionRecDatabase** (or the name used in your backend configuration).
+3. Right-click the database and select **Query Tool**.
+4. Open the `gestion_reclamation.sql` file.
+5. Click the **Execute** button (▶️) to run the script.
+6. Wait until the execution completes successfully.
+
+Your database is now ready to use.
+
 
 # 👨‍💻 Author
 
